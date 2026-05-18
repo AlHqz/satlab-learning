@@ -4,9 +4,11 @@ RUN corepack enable && corepack prepare pnpm@latest --activate
 
 WORKDIR /app
 
+ENV CI=true
+
 COPY package.json pnpm-lock.yaml ./
 
-RUN pnpm install
+RUN pnpm install --config.confirmModulesPurge=fals
 
 COPY . .
 
