@@ -7,6 +7,9 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
+  optimizeDeps: {
+    include: ['lucide-react']
+  },
   server: {
     host: true,
     port: 5173,
