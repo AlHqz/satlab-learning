@@ -1,16 +1,17 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import MainLayout from './components/shared/MainLayout.tsx';
 import Dashboard from './pages/Dashboard.tsx';
-import Modules from './pages/Modules.tsx';
+import Home from './pages/Home.tsx';
 
 function App() {
   return (
     <BrowserRouter>
-      <div className="min-h-screen">
+      <MainLayout>
         <Routes>
-          <Route path="/" element={<Dashboard />} />
-          <Route path="/modules" element={<Modules />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
-      </div>
+      </MainLayout>
     </BrowserRouter>
   );
 }
