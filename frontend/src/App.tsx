@@ -1,17 +1,20 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import MainLayout from './components/shared/MainLayout.tsx';
-import Dashboard from './pages/Dashboard.tsx';
-import Home from './pages/Home.tsx';
+import { MainLayout, ActivityLayout } from './components/layout';
+import {Home, Dashboard} from './pages';
+import Temp from './pages/Temp';
 
 function App() {
   return (
     <BrowserRouter>
-      <MainLayout>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/dashboard" element={<Dashboard />} />
+            <Route element={<MainLayout />}>
+              <Route path="/" element={<Home />} />
+              <Route path="/dashboard" element={<Dashboard />} />
+            </Route>
+            <Route element={<ActivityLayout eraName="ERA 3" activityTitle="Activity 8: FOR THE REWARD!"/>}>
+              <Route path="/temp" element={<Temp />} />
+            </Route>
         </Routes>
-      </MainLayout>
     </BrowserRouter>
   );
 }

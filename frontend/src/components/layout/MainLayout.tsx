@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { Home, LayoutDashboard, ChevronLeft, Menu } from 'lucide-react';
+import { Link, useLocation, Outlet } from 'react-router-dom';
+import { Home, LayoutDashboard, ChevronLeft } from 'lucide-react';
 import githubLogo from '../../assets/brand-logos/github_logo.svg';
 import xLogo from '../../assets/brand-logos/x_logo.png';
+import satLabLogo from '../../assets/brand-logos/satlab_logo.png';
 
-export default function MainLayout({ children }: { children: React.ReactNode }) {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+export default function MainLayout() {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const location = useLocation();
 
   const navItems = [
@@ -14,25 +15,26 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
   ];
 
   return (
+    // The sidebar
     <div className="min-h-screen flex font-sans">
       <aside 
         className={`bg-slate-900 text-white transition-all duration-300 ease-in-out fixed h-full z-20 flex flex-col ${
           isSidebarOpen ? 'w-64' : 'w-20'
         }`}
       >
-        <div className="h-16 flex items-center justify-between px-4 border-b border-slate-800">
+        {/* For the logo */}
+        <div className="h-16 flex items-center justify-between px-2 border-b border-slate-800">
           {isSidebarOpen && (
-            <span className="font-extrabold text-xl tracking-tight">
-              Sat<span className="text-orange-500">Lab</span>
-            </span>
+            <Link to="/" className="flex items-center space-x-3 w-full">
+              <img src={satLabLogo} alt="SatLab Logo" className="h-10 w-10 drop-shadow-sm drop-shadow-neutral-950/30 bg-slate-50 rounded-xl"/>
+              <h1 className="text-xl font-extrabold text-slate-50 text-shadow-lg text-shadow-neutral-950/50">SatLab</h1>              
+            </Link>
           )}
-          <button 
-            onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-            className={`p-2 hover:bg-slate-800 rounded-lg transition-colors ${!isSidebarOpen && 'mx-auto'}`}
-          >
-            {isSidebarOpen ? <ChevronLeft size={20} /> : <Menu size={20} />}
+          <button onClick={() => setIsSidebarOpen(!isSidebarOpen)} className={`p-2 hover:bg-slate-800 rounded-lg transition-colors ${!isSidebarOpen && 'mx-auto'}`}>
+            {isSidebarOpen ? <ChevronLeft size={20} /> : <img src={satLabLogo} alt="SatLab Logo" className="h-10 w-10 drop-shadow-sm drop-shadow-neutral-950/30 bg-slate-50 rounded-xl"/>}
           </button>
         </div>
+        {/* Navigation items */}
         <nav className="flex-1 p-4 space-y-2 overflow-y-auto">
           {navItems.map((item) => {
             const isActive = location.pathname === item.path;
@@ -53,7 +55,7 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
             );
           })}
         </nav>
-
+          {/* Social Links */}
         <div className="p-4 border-t border-slate-800">
             <a 
                 href="https://x.com/satlab_learning" 
@@ -89,8 +91,7 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
                 
                 {isSidebarOpen && (
                 <div className="flex flex-col">
-                    <span className="text-sm font-medium">Open Source</span>
-                    <span className="text-xs text-slate-500">v1.0.0-alpha</span>
+                    <span className="text-sm font-medium">GitHub</span>
                 </div>
                 )}
             </a>
@@ -102,7 +103,7 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
           isSidebarOpen ? 'ml-64' : 'ml-20'
         }`}
       >
-        {children}
+        <Outlet />
       </main>
       
     </div>
