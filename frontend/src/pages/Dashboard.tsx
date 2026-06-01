@@ -1,14 +1,14 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import ActivityCard from '../components/shared/ActivityCard.tsx';
-import Curriculum from '../components/Curriculum.tsx';
+import ActivityCard from '../components/shared/ActivityCard';
+import { CURRICULUM } from '../components/shared/Curriculum';
 
 export default function Dashboard() {
   const navigate = useNavigate();
   return (
     <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-8 font-sans">
       <div className="max-w-7xl mx-auto text-center mb-16">
-        <h1 className="text-5xl font-extrabold text-gray-900 tracking-tight mb-4">
+        <h1 className="text-5xl font-extrabold text-slate-950 tracking-tight mb-4">
           SatLab <span className="text-orange-500">Playground</span>
         </h1>
         <p className="text-xl text-gray-600 max-w-2xl mx-auto">
@@ -17,7 +17,7 @@ export default function Dashboard() {
       </div>
 
       <div className="max-w-6xl mx-auto space-y-16">
-        {Curriculum.map((era, index) => (
+        {CURRICULUM.map((era, index) => (
           <div key={index} className="relative">
             
             <div className="mb-6 border-b-2 border-gray-200 pb-4">
@@ -51,7 +51,7 @@ export default function Dashboard() {
           </p>
           <button className='bg-orange-500 hover:bg-orange-700 py-5 px-10 transition-all duration-300 ease-in-out
             transform hover:-translate-y-1 hover:shadow-lg rounded-full' 
-            onClick={() => window.open('mailto:satllab-learning@protonmail.com', '_blank')}>
+            onClick={() => window.open('mailto:satlab-learning@protonmail.com', '_blank')}>
               <span className='text-white font-bold'>Contact Us</span>
             </button>
         </div>

@@ -8,7 +8,7 @@ export default defineConfig({
     tailwindcss(),
   ],
   optimizeDeps: {
-    include: ['lucide-react']
+    include: ['lucide-react', 'react', 'react-dom', 'react-router-dom']
   },
   server: {
     host: true,
