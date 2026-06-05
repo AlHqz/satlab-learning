@@ -1,6 +1,8 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { MainLayout, ActivityLayout } from './components/layout';
 import {Home, Dashboard} from './pages';
+import * as Activities from './pages/activities';
+import Class from './components/shared/Class';
 import Temp from './pages/Temp';
 
 function App() {
@@ -10,8 +12,13 @@ function App() {
             <Route element={<MainLayout />}>
               <Route path="/" element={<Home />} />
               <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/:eraId/:activityId/class" element={<Class />} />
             </Route>
-            <Route element={<ActivityLayout eraName="ERA 3" activityTitle="Activity 8: FOR THE REWARD!"/>}>
+            <Route path="/:eraId/:activityId/activity"/>
+            <Route element={<ActivityLayout eraName="ERA 3" activityTitle="Activity 8: FOR THE REWARD!" backUrl='/era3/activity8/class'/>}>
+              <Route path="/era3/activity8/activity" element={<Activities.MiningSimulator />} />
+            </Route>
+            <Route element={<ActivityLayout eraName="ERA #" activityTitle="Test" backUrl="/"/>}>
               <Route path="/temp" element={<Temp />} />
             </Route>
         </Routes>
