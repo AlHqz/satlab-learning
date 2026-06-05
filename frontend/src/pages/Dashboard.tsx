@@ -1,4 +1,3 @@
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import ActivityCard from '../components/shared/ActivityCard';
 import { CURRICULUM } from '../components/shared/Curriculum';

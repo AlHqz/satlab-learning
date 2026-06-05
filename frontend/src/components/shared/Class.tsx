@@ -1,4 +1,3 @@
-import React from 'react';
 import { useNavigate, useParams, Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import  { activitiesData }  from './ActivitiesData';

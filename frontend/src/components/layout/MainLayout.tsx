@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Link, useLocation, Outlet } from 'react-router-dom';
 import { Home, LayoutDashboard, ChevronLeft } from 'lucide-react';
 import githubLogo from '../../assets/brand-logos/github_logo.svg';

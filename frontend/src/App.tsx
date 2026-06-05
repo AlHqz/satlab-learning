@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { MainLayout, ActivityLayout } from './components/layout';
+import { MainLayout } from './components/layout';
 import {Home, Dashboard} from './pages';
 import Class from './components/shared/Class';
 
