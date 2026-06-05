@@ -6,12 +6,12 @@ import SatLabLogo from '../../assets/brand-logos/satlab_logo.png';
 interface ActivityLayoutProps {
   eraName: string;
   activityTitle: string;
-  backUrl?: string;
+  backUrl: string;
 }
 
-export default function ActivityLayout({ eraName, activityTitle, backUrl = "/dashboard" }: ActivityLayoutProps) {
+export default function ActivityLayout({ eraName, activityTitle, backUrl }: ActivityLayoutProps) {
   return (
-    <div className="min-h-screen flex flex-col bg-slate-950 text-slate-100 font-sans">
+    <div className="min-h-screen flex flex-col bg-zinc-950 text-slate-100 font-sans">
       <header className="h-16 bg-slate-950 border-b border-slate-900 px-6 flex items-center justify-between z-10 select-none">
         <div className="flex items-center space-x-4">
           <Link
@@ -20,7 +20,7 @@ export default function ActivityLayout({ eraName, activityTitle, backUrl = "/das
             title="Back"
           >
             <ArrowLeft size={18} className="transform group-hover:-translate-x-1 transition-transform" />
-            <span>Back to Map</span>
+            <span>Back to Class</span>
           </Link>
           <span className="text-slate-700">|</span>
 
@@ -38,7 +38,7 @@ export default function ActivityLayout({ eraName, activityTitle, backUrl = "/das
                 <h1 className="text-xl font-extrabold text-gray-50">
                   SatLab <span className="text-orange-500">Playground</span>
                 </h1>
-                <img src={SatLabLogo} alt="SatLab Logo" className="h-10 w-10 drop-shadow-sm drop-shadow-neutral-50/30 bg-slate-50 rounded-xl"/>
+                <img src={SatLabLogo} alt="SatLab Logo" className="h-10 w-10 drop-shadow-sm drop-shadow-neutral-50/30 bg-slate-100 rounded-xl"/>
             </Link>
         </div>
       </header>

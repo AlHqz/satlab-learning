@@ -29,7 +29,7 @@ export const CURRICULUM = [
       { id: 12, title: "Independent Cabins (Nodes)", isLocked: true },
       { id: 13, title: "We all decide (Consensus & descentralization)", isLocked: true },
       { id: 14, title: "Shared knowledge (Distribution)", isLocked: true },
-      { id: 15, title: "FOR THE REWARD! (Mining)", isLocked: false, path: "/temp" },
+      { id: 15, title: "FOR THE REWARD! (Mining)", isLocked: false, path: "/era3/activity8/class" },
       { id: 16, title: "Cut it in half (Halving)", isLocked: true },
       { id: 17, title: "21 million (Supply)", isLocked: true},
     ]

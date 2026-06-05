@@ -6,7 +6,7 @@ import { CURRICULUM } from '../components/shared/Curriculum';
 export default function Dashboard() {
   const navigate = useNavigate();
   return (
-    <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-8 font-sans">
+    <div className="min-h-screen py-12 px-4 bg-neutral-100 sm:px-6 lg:px-8 font-sans">
       <div className="max-w-7xl mx-auto text-center mb-16">
         <h1 className="text-5xl font-extrabold text-slate-950 tracking-tight mb-4">
           SatLab <span className="text-orange-500">Playground</span>
