@@ -4,6 +4,7 @@ import { useResultStore } from '../../../../store/useAcitvityResult';
 import IdleBackgroundAnimation from './assets/activity_idle_bg.png';
 import SuccessBackgroundAnimation from './assets/activity_success_bg.png';
 import { useGameScale } from '../../../../components/shared/useGameScale';
+import { SuccessFireworks } from '../../../../components/shared/SuccessFireworks';
 import { InteractiveButton } from './InteractiveButton';
 import { useMiningBattle } from './logic/useMiningBattle';
 import { BattleHUD } from './components/BattleHUD';
@@ -34,7 +35,7 @@ export default function MiningSimulator() {
                     onNext: () => navigate('/'), // In time this will redirect the user to the next activity
                     onRetry: () => navigate(0)
                 });
-            }, 1000);
+            }, 13000);
         } else if (status === 'LOST') {
             setTimeout(() => {
                 openModal({
@@ -194,6 +195,13 @@ export default function MiningSimulator() {
                         disabled={status === 'WON' || status === 'LOST'} 
                     />
                 </div>
+
+                {/* Success Fireworks Animation */}
+                {status === 'WON' && (
+                    <div>
+                        <SuccessFireworks />
+                    </div>
+                )}
             </div>
         </div>
     );
