@@ -14,8 +14,8 @@ export const useMiningBattle = (targetClicks: number, enemyClicksPerSecond: numb
         finalHash: 'AWAITING INITIALIZATION...'
     });
 
-    const requestRef = useRef<number>();
-    const startTimeRef = useRef<number>();
+    const requestRef = useRef<number>(null);
+    const startTimeRef = useRef<number>(null);
     const lastRenderTimeRef = useRef<number>(0);
     const recentClicksRef = useRef<number[]>([]);
     const workerRef = useRef<Worker | null>(null);

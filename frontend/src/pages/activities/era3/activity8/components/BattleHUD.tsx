@@ -1,4 +1,4 @@
-export const BattleHUD = ({ studentClicks, studentHashrate, enemyClicks, enemyHashrate, timeLeft, targetClicks }) => {
+export const BattleHUD = ({ studentClicks, studentHashrate, enemyClicks, enemyHashrate, timeLeft, targetClicks }: any) => {
     // Logic variables
     const lowTime = timeLeft <= 10;
     const studentPercentage = Math.min((studentClicks / targetClicks) * 100, 100);
