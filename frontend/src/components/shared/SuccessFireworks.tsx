@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import SimpleFireworks from '../../assets/simple_fw.png';
 import BtcFirework from '../../assets/btc_fw.png';
 
