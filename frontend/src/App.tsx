@@ -3,10 +3,12 @@ import { MainLayout, ActivityLayout } from './components/layout';
 import {Home, Dashboard} from './pages';
 import * as Activities from './pages//activities/index';
 import Class from './components/shared/Class';
+import { ResultModal } from './components/shared/ActivityResultModal';
 
 function App() {
   return (
     <BrowserRouter>
+      <ResultModal />
         <Routes>
             <Route element={<MainLayout />}>
               <Route path="/" element={<Home />} />

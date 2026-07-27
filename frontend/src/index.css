@@ -3,3 +3,23 @@
 body {
   background-color: #f4f7f6;
 }
+
+@layer utilities {
+  @keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  
+  @keyframes scaleUp {
+    0% { opacity: 0; transform: scale(0.95); }
+    100% { opacity: 1; transform: scale(1); }
+  }
+  
+  .animate-fade-in {
+    animation: fadeIn 0.2s ease-out forwards;
+  }
+  
+  .animate-scale-up {
+    animation: scaleUp 0.2s ease-out forwards;
+  }
+}

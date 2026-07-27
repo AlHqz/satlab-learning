@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { useResultStore } from '../../../../store/useAcitvityResult';
 import IdleBackgroundAnimation from './assets/activity_idle_bg.png';
 import SuccessBackgroundAnimation from './assets/activity_success_bg.png';
-import { SuccessFireworks } from '../../../../components/shared/SuccessFireworks';
 import { useGameScale } from '../../../../components/shared/useGameScale';
 import { InteractiveButton } from './InteractiveButton';
 import { useMiningBattle } from './logic/useMiningBattle';
@@ -16,6 +15,40 @@ export default function MiningSimulator() {
     
     // Starting the game motor, 250 clicks to win, 4.17 H/s for the enemy, 60 seconds time limit
     const { studentClicks, studentHashrate, enemyClicks, enemyHashrate, timeLeft, status, hashes, handleStudentClick } = useMiningBattle(250, 4.17, 60);
+
+    //Effect to handle the activity's end, throwing a modal with the results and stats of the activity
+    useEffect(() => {
+        if (status === 'WON') {
+            const calculatedStars = timeLeft >= 20 ? 3 : timeLeft >= 10 ? 2 : 1;
+            setTimeout(() => {
+                openModal({
+                    status: 'victory',
+                    stars: calculatedStars,
+                    title: 'Block Found!',
+                    message: 'You helped securing Bitcoin\'s network and claimed your reward.',
+                    stats: [
+                        { label: 'Time left', value: `${timeLeft}s` },
+                        { label: 'Your average Hashrate', value: `${studentHashrate.toFixed(2)} H/s` },
+                        { label: 'Valid Hash', value: hashes.finalHash ? hashes.finalHash.substring(0, 16) + '...' : 'N/A' }
+                    ],
+                    onNext: () => navigate('/'), // In time this will redirect the user to the next activity
+                    onRetry: () => navigate(0)
+                });
+            }, 1000);
+        } else if (status === 'LOST') {
+            setTimeout(() => {
+                openModal({
+                    status: 'defeat',
+                    stars: 0,
+                    title: 'Failure!',
+                    message: 'Another miner found the valid Hash before you.',
+                    stats:[],
+                    onNext: null, 
+                    onRetry: () => navigate(0) 
+                });
+            }, 4000);
+        }
+    }, [status, timeLeft, studentClicks, enemyClicks, studentHashrate, hashes.finalHash, navigate, openModal]);
 
     return (
         <div className="h-[calc(100dvh-4rem)] w-full relative overflow-hidden bg-neutral-950 select-none">
