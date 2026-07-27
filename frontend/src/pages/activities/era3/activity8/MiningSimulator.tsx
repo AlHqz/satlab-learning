@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom'; 
 import { useResultStore } from '../../../../store/useAcitvityResult';
 import IdleBackgroundAnimation from './assets/activity_idle_bg.png';
