@@ -1,0 +1,1 @@
+export { default as MiningSimulator } from './era3/activity8/MiningSimulator';

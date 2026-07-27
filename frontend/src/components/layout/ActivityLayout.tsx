@@ -10,7 +10,7 @@ interface ActivityLayoutProps {
 
 export default function ActivityLayout({ eraName, activityTitle, backUrl }: ActivityLayoutProps) {
   return (
-    <div className="min-h-screen flex flex-col bg-zinc-950 text-slate-100 font-sans">
+    <div className="min-h-[100dvh] flex flex-col bg-zinc-950 text-slate-100 font-sans">
       <header className="h-16 bg-slate-950 border-b border-slate-900 px-6 flex items-center justify-between z-10 select-none">
         <div className="flex items-center space-x-4">
           <Link

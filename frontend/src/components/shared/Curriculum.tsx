@@ -15,7 +15,7 @@ export const CURRICULUM = [
     activities: [
       { id: 5, title: "The Crusher (Hashes)", isLocked: true },
       { id: 6, title: "The Safe (Keys)", isLocked: true },
-      { id: 7, title: "The Needle Finder (PoW)", isLocked: true },
+      { id: 7, title: "Roots", isLocked: true },
     ]
   },
   {
