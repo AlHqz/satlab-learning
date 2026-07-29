@@ -1,10 +1,11 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom'; 
 import { useResultStore } from '../../../../store/useAcitvityResult';
+import { LoadingAnimation } from '../../../../components/shared/LoadingAnimation';
 import IdleBackgroundAnimation from './assets/activity_idle_bg.png';
 import SuccessBackgroundAnimation from './assets/activity_success_bg.png';
+import {SuccessFireworks } from '../../../../components/shared/SuccessFireworks';
 import { useGameScale } from '../../../../components/shared/useGameScale';
-import { SuccessFireworks } from '../../../../components/shared/SuccessFireworks';
 import { InteractiveButton } from './InteractiveButton';
 import { useMiningBattle } from './logic/useMiningBattle';
 import { BattleHUD } from './components/BattleHUD';
@@ -13,9 +14,33 @@ export default function MiningSimulator() {
     const scale = useGameScale();
     const navigate = useNavigate();
     const openModal = useResultStore(state => state.openModal);
-    
+    const [isLoaded, setIsLoaded] = useState(false);
+
     // Starting the game motor, 250 clicks to win, 4.17 H/s for the enemy, 60 seconds time limit
     const { studentClicks, studentHashrate, enemyClicks, enemyHashrate, timeLeft, status, hashes, handleStudentClick } = useMiningBattle(250, 4.17, 60);
+
+    //Preloading all heavy assets
+    useEffect(() => {
+        const assetsToPreload = [IdleBackgroundAnimation, SuccessBackgroundAnimation];
+        
+        const preloadPromises = assetsToPreload.map(src => {
+            return new Promise((resolve, reject) => {
+                const img = new Image();
+                img.src = src;
+                img.onload = resolve;
+                img.onerror = reject;
+            });
+        });
+        //To hide loading screen
+        Promise.all(preloadPromises)
+            .then(() => {
+                setIsLoaded(true);
+            })
+            .catch(err => {
+                console.error("Error preloading assets:", err);
+                setIsLoaded(true);
+            });
+    }, []);
 
     //Effect to handle the activity's end, throwing a modal with the results and stats of the activity
     useEffect(() => {
@@ -50,7 +75,15 @@ export default function MiningSimulator() {
             }, 4000);
         }
     }, [status, timeLeft, studentClicks, enemyClicks, studentHashrate, hashes.finalHash, navigate, openModal]);
-
+    //Loading Screen
+    if (!isLoaded) {
+        return (
+            <div className="h-[calc(100dvh-4rem)] w-full flex flex-col items-center justify-center bg-neutral-950 text-green-400 font-mono">
+                <LoadingAnimation />
+            </div>
+        );
+    }
+    //Main Activity Screen
     return (
         <div className="h-[calc(100dvh-4rem)] w-full relative overflow-hidden bg-neutral-950 select-none">
             <div className="absolute top-[50%] left-[50%] w-[1920px] h-[1080px]" style={{transform: `translate(-50%, -50%) scale(${scale})`,transformOrigin: 'center'}}>
