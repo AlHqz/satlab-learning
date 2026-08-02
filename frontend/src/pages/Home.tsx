@@ -14,7 +14,7 @@ interface SocialLink {
 const socialLinks: SocialLink[] = [
   {
     name: 'GitHub',
-    url: 'https://github.com/AlHqz/satlab-learning',
+    url: 'https://github.com/SatLab-Learning/satlab-learning',
     icon: <img src={GitHubLogo} alt="GitHub" className="w-6 h-6" />,
     colorClass: 'hover:bg-gray-200 dark:hover:bg-gray-800',
   },
@@ -26,7 +26,7 @@ const socialLinks: SocialLink[] = [
   },
   {
     name: 'GeyserFund',
-    url: 'https://geyser.fund/hero/satlablearning',
+    url: 'https://geyser.fund/project/satlab?',
     icon: <img src={GeyserLogo} alt="GeyserFund" className="w-20 h-8" />,
     colorClass: 'hover:bg-green-50 dark:hover:bg-green-900/30',
   }
