@@ -39,23 +39,35 @@ Ensure you have the latest version of [Docker](https://docs.docker.com/get-docke
 
 **1. Clone the repository:**
 ```bash
-git clone https://github.com/AlHqz/satlab-learning
+git clone https://github.com/SatLab-Learning/satlab-learning
 ```
 **2. Change Directory:**
 ```bash
 cd satlab-learning/
 ```
 **3. Build & Initialize Container:**
+
+For dev environment run:
 ```bash
-docker-compose up --build
+docker compose -f docker-compose.dev.yml up --build
 ```
-**4. Access your instance:**
+For production deployment, make sure to update the Caddyfile with your domain or IP, then run:
+```bash
+docker compose -f docker-compose.prod.yml up --build -d
+```
+**4. Access your local instance (dev) through:**
 
 Access:
 ```bash
 localhost:5173/
 ```
-from any web browser to visualize your own instance of SatLab and, when you are done having fun, just hit Ctrl+C in your terminal. Otherwise, run:
+from any web browser to visualize your own instance of SatLab and, when you are done having fun, just hit Ctrl+C in your terminal. Otherwise, run any of the following commands depending on the build:
+
+For dev environment:
 ```bash
-docker-compose down
+docker compose -f docker-compose.dev.yml down
+```
+For production environment:
+```bash
+docker compose -f docker-compose.prod.yml down
 ```
